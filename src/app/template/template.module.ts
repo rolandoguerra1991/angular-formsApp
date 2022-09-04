@@ -5,6 +5,7 @@ import { TemplateRoutingModule } from './template-routing.module';
 import { SwitchesComponent } from './switches/switches.component';
 import { DynamicsComponent } from './dynamics/dynamics.component';
 import { BasicsComponent } from './basics/basics.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { BasicsComponent } from './basics/basics.component';
   ],
   imports: [
     CommonModule,
-    TemplateRoutingModule
+    TemplateRoutingModule,
+    FormsModule
   ]
 })
 export class TemplateModule { }
