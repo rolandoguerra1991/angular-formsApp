@@ -6,18 +6,20 @@ import { SwitchesComponent } from './switches/switches.component';
 import { DynamicsComponent } from './dynamics/dynamics.component';
 import { BasicsComponent } from './basics/basics.component';
 import { FormsModule } from '@angular/forms';
+import { CustomMinDirective } from '../directives/custom-min.directive';
 
 
 @NgModule({
   declarations: [
     SwitchesComponent,
     DynamicsComponent,
-    BasicsComponent
+    BasicsComponent,
+    CustomMinDirective,
   ],
   imports: [
     CommonModule,
     TemplateRoutingModule,
-    FormsModule
+    FormsModule,
   ]
 })
 export class TemplateModule { }

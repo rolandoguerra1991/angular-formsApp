@@ -3,14 +3,28 @@
 
 <div class="row">
   <div class="col">
-    <form (ngSubmit)="save()" #myForm="ngForm">
-
+    <form
+      (ngSubmit)="save()"
+      #myForm="ngForm"
+    >
       <div class="row mb-3">
-        <label class="col-sm-2 col-form-label">Product</label>
+        <label class="col-sm-2 col-form-label">
+          Product
+        </label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" placeholder="Product Name" name="product" ngModel required
-            minlength="3">
-          <span class="form-text text-danger" *ngIf="nameValid()">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Product Name"
+            name="product"
+            [ngModel]="initForm.product"
+            required
+            minlength="3"
+          >
+          <span
+            class="form-text text-danger"
+            *ngIf="nameValid()"
+          >
             should have 3 letters
           </span>
         </div>
@@ -19,20 +33,43 @@
       <div class="row mb-3">
         <label class="col-sm-2 col-form-label">Price</label>
         <div class="col-sm-10">
-          <input type="number" class="form-control" placeholder="Product Price" ngModel name="price">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Product Price"
+            [ngModel]="initForm.price"
+            name="price"
+          >
         </div>
-        <span class="form-text text-danger" *ngIf="priceValid()">
+        <span
+          class="form-text text-danger"
+          *ngIf="priceValid()"
+        >
           price must be 0 or greater
         </span>
       </div>
       <div class="row mb-3">
         <label class="col-sm-2 col-form-label">Stock</label>
         <div class="col-sm-10">
-          <input type="number" class="form-control" placeholder="Product Stock" ngModel name="stock">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Product Stock"
+            [ngModel]="initForm.stock"
+            name="stock"
+            customMin
+            [minimo]="0"
+          >
         </div>
       </div>
       <div class="row mb-3">
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="priceValid()"
+        >
+        Save
+      </button>
       </div>
     </form>
   </div>

@@ -9,13 +9,22 @@ import { NgForm } from '@angular/forms';
 export class BasicsComponent implements OnInit {
   @ViewChild('myForm') myForm!: NgForm;
 
+  initForm = {
+    product: 'Redmi note 8',
+    price: 150,
+    stock: 10
+  }
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
   save() {
-    console.log(this.myForm)
+    this.myForm.resetForm({
+      stock: 0,
+      price: 0,
+    })
   }
 
   nameValid():boolean {
