@@ -1,1 +1,103 @@
-<p>dynamics works!</p>
+<h2>Template: <small>Dynamics</small></h2>
+<hr>
+
+<form
+  (ngSubmit)="save()"
+  autocomplete="off"
+  #dynamicForm="ngForm"
+>
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">
+      Name
+    </label>
+    <div class="col-sm-9">
+      <input
+        class="form-control"
+        placeholder="Name"
+        [ngModel]="person.name"
+        name="name"
+        required
+      >
+      <span
+        class="form-text text-danger"
+        *ngIf="nameIsInvalid()"
+      >
+        The name is Required
+      </span>
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">
+      Add
+    </label>
+    <div class="col-sm-9">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Add Favorite Game"
+          [(ngModel)]="newGame"
+          name="newGame"
+          (keyup.enter)="addNewGame()"
+        >
+        <button
+          class="btn btn-outline-primary"
+          type="button"
+          (click)="addNewGame()"
+        >
+          Add
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">
+      Favorites
+    </label>
+    <div class="col-sm-9">
+      <div
+        *ngFor="let game of person.favorites; let i = index"
+        class="input-group mb-3"
+      >
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Add Favorite Game"
+          aria-label="Add Favorite Game"
+          aria-describedby="button-addon2"
+          name="game_{{ game.id }}"
+          [(ngModel)]="game.name"
+        >
+        <button
+          class="btn btn-outline-danger"
+          type="button"
+          (click)="remove(i)"
+        >
+          Remove
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <button
+        type="button"
+        class="btn btn-primary float-end"
+        (click)="save()"
+        [disabled]="nameIsInvalid()"
+      >
+        Save
+      </button>
+    </div>
+  </div>
+</form>
+
+<div class="row">
+  <div class="col">
+
+    <pre>{{ person | json }}</pre>
+  </div>
+</div>
